@@ -22,13 +22,13 @@ public class BasketServiceImpl implements IBasketService {
     public void addToBasket(int flightId) {
         for(Flight flight : this.sessionObject.getBasket()) {
             if(flight.getId() == flightId) {
-                flight.setLength(flight.getLength()+1);
+                flight.setPlaces(flight.getPlaces()+1);
                 return;
             }
         }
 
         Flight flight = this.flightDAO.getFlightById(flightId);
-        flight.setLength(1);
+        flight.setPlaces(1);
         this.sessionObject.getBasket().add(flight);
     }
 
@@ -36,7 +36,7 @@ public class BasketServiceImpl implements IBasketService {
     public double calculateBill() {
         double bill = 0;
         for(Flight flight : this.sessionObject.getBasket()) {
-            bill = bill + flight.getPrice() * flight.getLength();
+            bill = bill + flight.getPrice() * flight.getPlaces();
         }
         return bill;
     }

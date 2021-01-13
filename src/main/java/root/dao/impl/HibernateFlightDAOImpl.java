@@ -19,10 +19,10 @@ public class HibernateFlightDAOImpl implements IFlightDAO {
     SessionFactory sessionFactory;
 
     @Override
-    public Flight getFlightByEAN(String ean) {
+    public Flight getFlightByDepartures(String departures) {
         Session session = this.sessionFactory.openSession();
-        Query<Flight> query = session.createQuery("FROM root.model.Flight WHERE ean = :ean");
-        query.setParameter("ean", ean);
+        Query<Flight> query = session.createQuery("FROM root.model.Flight WHERE departures = :departures");
+        query.setParameter("departures", departures);
         Flight flight = null;
         try {
             flight = query.getSingleResult();

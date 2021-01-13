@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface IFlightService {
     AddFlightResult addFlight(Flight flight);
-        Flight getFlightByEAN(String ean);
+        Flight getFlightByDepartures(String departures);
         Flight getFlightById(int id);
         void updateFlight(Flight flight);
         List<Flight> getFlightsByCategoryWithFilter(String category);
 
 enum AddFlightResult {
-    LENGTH_ADDED,
+    PLACES_ADDED,
     FLIGHT_ADDED
 }
 }

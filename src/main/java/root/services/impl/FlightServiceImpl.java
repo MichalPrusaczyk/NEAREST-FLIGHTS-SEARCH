@@ -22,21 +22,23 @@ public class FlightServiceImpl implements IFlightService {
 
     @Override
     public AddFlightResult addFlight(Flight flight) {
-        Flight flightFromDB = this.flightDAO.getFlightByEAN(flight.getEan());
+        Flight flightFromDB = this.flightDAO.getFlightByDepartures(flight.getDeparture());
         if(flightFromDB == null) {
             this.flightDAO.persistFlight(flight);
             return AddFlightResult.FLIGHT_ADDED;
         } else {
-            flightFromDB.setLength(flightFromDB.getLength() + flight.getLength());
+            flightFromDB.setPlaces(flightFromDB.getPlaces() + flight.getPlaces());
             this.flightDAO.updateFlight(flightFromDB);
-            return AddFlightResult.LENGTH_ADDED;
+            return AddFlightResult.PLACES_ADDED;
         }
     }
 
     @Override
-    public Flight getFlightByEAN(String ean) {
-        return this.flightDAO.getFlightByEAN(ean);
+    public Flight getFlightByDepartures(String departures) {
+        return null;
     }
+
+
 
     @Override
     public Flight getFlightById(int id) {

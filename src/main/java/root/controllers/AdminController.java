@@ -49,7 +49,7 @@ public class AdminController {
             return "redirect:/login";
         }
         IFlightService.AddFlightResult result = this.flightService.addFlight(flight);
-        if(result == IFlightService.AddFlightResult.LENGTH_ADDED) {
+        if(result == IFlightService.AddFlightResult.PLACES_ADDED) {
             this.sessionObject.setInfo("Lenght increase");
         } else if(result == IFlightService.AddFlightResult.FLIGHT_ADDED) {
             this.sessionObject.setInfo("New flight added");

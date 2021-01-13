@@ -36,7 +36,7 @@ public class CommonController {
             for (Flight flightFormMainStore : mainStoreFlights) {
                 for (Flight flightFormBasket : this.sessionObject.getBasket()) {
                     if (flightFormMainStore.getId() == flightFormBasket.getId()) {
-                        flightFormMainStore.setLength(flightFormMainStore.getLength() - flightFormBasket.getLength());
+                        flightFormMainStore.setPlaces(flightFormMainStore.getPlaces() - flightFormBasket.getPlaces());
                     }
                 }
             }

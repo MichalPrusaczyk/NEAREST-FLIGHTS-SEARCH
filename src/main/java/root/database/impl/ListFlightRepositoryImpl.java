@@ -30,9 +30,9 @@ public class ListFlightRepositoryImpl implements IFlightRepository {
     }
 
     @Override
-    public Flight getFlightByEAN(String ean) {
+    public Flight getFlightByDeparture(String departure) {
         for(Flight flight : this.flights) {
-            if(flight.getEan().equals(ean)) {
+            if(flight.getDeparture().equals(departure)) {
                 return flight;
             }
         }

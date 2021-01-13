@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import root.database.IUserRepository;
+import root.model.Flight;
 import root.model.User;
 import root.model.view.ChangePassData;
 import root.model.view.UserRegistrationData;
+import root.services.IFlightService;
 import root.services.IUserService;
 import root.session.SessionObject;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,9 +29,15 @@ public class UserController {
 
     @Autowired
     IUserService userService;
+    @Autowired
+    IFlightService flightService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginForm(Model model) {
+    public String loginForm(Model model, @RequestParam(defaultValue = "none") String category) {
+        List<Flight> mainStoreFlights = this.flightService.getFlightsByCategoryWithFilter(category);
+
+
+        model.addAttribute("flights", mainStoreFlights);
         model.addAttribute("userModel", new User());
         model.addAttribute("info", this.sessionObject.getInfo());
         return "login";

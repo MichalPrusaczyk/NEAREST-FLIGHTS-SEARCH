@@ -14,8 +14,8 @@ public class FilterUtils {
         List<Flight> filteredFlights = new ArrayList<>();
 
         for(Flight flight : flights) {
-            if(flight.getName().toUpperCase().contains(filter.toUpperCase()) ||
-                    flight.getShape().toUpperCase().contains(filter.toUpperCase())) {
+            if(flight.getOrigin().toUpperCase().contains(filter.toUpperCase()) ||
+                    flight.getDestination().toUpperCase().contains(filter.toUpperCase())) {
                 filteredFlights.add(flight);
             }
         }

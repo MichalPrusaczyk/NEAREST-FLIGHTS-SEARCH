@@ -33,7 +33,7 @@ public class OrderServiceImpl implements IOrderService {
 
         for(Flight flightFromBasket : orderedFlights) {
             Flight flightFromDB = this.flightDAO.getFlightById(flightFromBasket.getId());
-            if(flightFromDB.getLength() < flightFromBasket.getLength()) {
+            if(flightFromDB.getPlaces() < flightFromBasket.getPlaces()) {
                 return;
             }
         }
@@ -45,7 +45,7 @@ public class OrderServiceImpl implements IOrderService {
         //wyliczamy kwote zamowienia
         double bill = 0;
         for(Flight flight : orderedFlights) {
-            bill = bill + flight.getPrice() * flight.getLength();
+            bill = bill + flight.getPrice() * flight.getPlaces();
         }
         order.setPrice(bill);
         //ustawiamy status zamowienia
@@ -53,7 +53,7 @@ public class OrderServiceImpl implements IOrderService {
         //tworzymy pozycje zamowienia na podstawie koszyka
         for(Flight flight : orderedFlights) {
             OrderPosition orderPosition = new OrderPosition();
-            orderPosition.setLength(flight.getLength());
+            orderPosition.setLength(flight.getPlaces());
             orderPosition.setOrder(order);
             orderPosition.setFlight(flight);
 
@@ -64,7 +64,7 @@ public class OrderServiceImpl implements IOrderService {
 
         for(Flight flight : orderedFlights) {
             Flight flightFromDB = this.flightDAO.getFlightById(flight.getId());
-            flightFromDB.setLength(flightFromDB.getLength() - flight.getLength());
+            flightFromDB.setPlaces(flightFromDB.getPlaces() - flight.getPlaces());
             this.flightDAO.updateFlight(flightFromDB);
         }
 

@@ -9,7 +9,7 @@ public interface IFlightRepository {
 
         List<Flight> getFlightsByCategory(Flight.Category category);
 
-        Flight getFlightByEAN(String ean);
+        Flight getFlightByDeparture(String departure);
 
         void addFlight(Flight flight);
 
