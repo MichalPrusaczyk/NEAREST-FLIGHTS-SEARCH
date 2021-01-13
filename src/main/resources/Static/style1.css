@@ -81,14 +81,21 @@ html{
   margin: auto;
   width: 50%;
   overflow: hidden;
-  background-color:rgba(192,192,192,0.3);
+  /*background-color:rgba(192,192,192,0.3);*/
 }
-/* carousel */
-.carousel-item{
-    height: 32rem;
-    background:#777;
-    color:#fff;
-    position: relative;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+    color: white;
+    text-align:center;
+    font-size: 24px;
+    margin: 20px; /* Prevent double borders */
+    background-color: rgba(199,199,199,0.6);
+    padding: 20px;
 }
 .container{
     position: absolute;

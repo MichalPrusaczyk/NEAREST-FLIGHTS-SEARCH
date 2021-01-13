@@ -30,8 +30,8 @@
 
         <mapping class="root.model.Flight"/>
         <mapping class="root.model.User"/>
-<!--        <mapping class="root.model.Booking"/>-->
-<!--        <mapping class="root.model.BookingPosition"/>-->
+        <mapping class="root.model.Order"/>
+        <mapping class="root.model.OrderPosition"/>
 
     </session-factory>
 </hibernate-configuration>

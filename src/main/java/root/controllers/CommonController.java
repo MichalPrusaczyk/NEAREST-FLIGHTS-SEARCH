@@ -33,13 +33,13 @@ public class CommonController {
     public String main(Model model, @RequestParam(defaultValue = "none") String category) {
         if (sessionObject.isLogged()) {
             List<Flight> mainStoreFlights = this.flightService.getFlightsByCategoryWithFilter(category);
-//            for (Flight flightFormMainStore : mainStoreFlights) {
-//                for (Flight flightFormBasket : this.sessionObject.getBasket()) {
-//                    if (flightFormMainStore.getId() == flightFormBasket.getId()) {
-//                        flightFormMainStore.setLength(flightFormMainStore.getLength() - flightFormBasket.getLength());
-//                    }
-//                }
-//            }
+            for (Flight flightFormMainStore : mainStoreFlights) {
+                for (Flight flightFormBasket : this.sessionObject.getBasket()) {
+                    if (flightFormMainStore.getId() == flightFormBasket.getId()) {
+                        flightFormMainStore.setLength(flightFormMainStore.getLength() - flightFormBasket.getLength());
+                    }
+                }
+            }
             model.addAttribute("flights", mainStoreFlights);
             model.addAttribute("user", this.sessionObject.getUser());
             model.addAttribute("filter", this.sessionObject.getFilter());

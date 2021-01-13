@@ -14,6 +14,7 @@ public class SessionObject {
     private User user = null;
     private String info = null;
     private String filter = null;
+    private List<Flight> basket = new ArrayList<>();
 
 
     public boolean isLogged() {
@@ -42,6 +43,14 @@ public class SessionObject {
 
     public void setFilter(String filter) {
         this.filter = filter;
+    }
+
+    public List<Flight> getBasket() {
+        return basket;
+    }
+
+    public void setBasket(List<Flight> basket) {
+        this.basket = basket;
     }
 
 }
