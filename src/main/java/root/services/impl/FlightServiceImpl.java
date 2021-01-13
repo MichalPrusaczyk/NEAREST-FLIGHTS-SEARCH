@@ -22,7 +22,7 @@ public class FlightServiceImpl implements IFlightService {
 
     @Override
     public AddFlightResult addFlight(Flight flight) {
-        Flight flightFromDB = this.flightDAO.getFlightByDepartures(flight.getDeparture());
+        Flight flightFromDB = this.flightDAO.getFlightByDepartures(flight.getDepartureDate() + flight.getDepartureHour());
         if(flightFromDB == null) {
             this.flightDAO.persistFlight(flight);
             return AddFlightResult.FLIGHT_ADDED;
@@ -34,7 +34,7 @@ public class FlightServiceImpl implements IFlightService {
     }
 
     @Override
-    public Flight getFlightByDepartures(String departures) {
+    public Flight getFlightByDepartures(String departuresDate, String departuresHour) {
         return null;
     }
 

@@ -49,7 +49,8 @@
 
                     <p th:text="'From '+ ${flight.destination} + ' to '+ ${flight.origin}" class="flight-name"></p>
 
-                    <p th:text="${flight.departure}"></p>
+                    <p th:text="${flight.departureDate}"></p>
+                    <p th:text="${flight.departureHour}"></p>
                     </li>
                 </div></th:block>
 

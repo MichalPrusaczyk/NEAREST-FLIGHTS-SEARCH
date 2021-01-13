@@ -10,17 +10,19 @@ public class Flight {
     private String origin;
     private String destination;
     private int places;
-    private String departure;
+    private String departureDate;
+    private String departureHour;
     private double price;
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Flight(int id, String origin, String destination, int places, String departure, double price, Category category) {
+    public Flight(int id, String origin, String destination, int places, String departureDate, String departureHour, double price, Category category) {
         this.id = id;
         this.origin = origin;
         this.destination = destination;
         this.places = places;
-        this.departure = departure;
+        this.departureDate = departureDate;
+        this.departureHour = departureHour;
         this.price = price;
         this.category = category;
     }
@@ -60,12 +62,20 @@ public class Flight {
         this.places = places;
     }
 
-    public String getDeparture() {
-        return departure;
+    public String getDepartureDate() {
+        return departureDate;
     }
 
-    public void setDeparture(String departure) {
-        this.departure = departure;
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getDepartureHour() {
+        return departureHour;
+    }
+
+    public void setDepartureHour(String departureHour) {
+        this.departureHour = departureHour;
     }
 
     public double getPrice() {
@@ -91,7 +101,7 @@ public class Flight {
 
     @Override
     public Object clone() {
-        return new Flight(this.id, this.origin, this.destination, this.places, this.departure, this.price, this.category);
+        return new Flight(this.id, this.origin, this.destination, this.places, this.departureDate, this.departureHour, this.price, this.category);
     }
 
     @Override
@@ -105,8 +115,10 @@ public class Flight {
                 .append(destination)
                 .append(", places=")
                 .append(places)
-                .append(", departure='")
-                .append(departure)
+                .append(", departureDate='")
+                .append(departureDate)
+                .append(", departureHour='")
+                .append(departureHour)
                 .append(", price=")
                 .append(price)
                 .append(", category=")

@@ -30,9 +30,9 @@ public class ListFlightRepositoryImpl implements IFlightRepository {
     }
 
     @Override
-    public Flight getFlightByDeparture(String departure) {
+    public Flight getFlightByDeparture(String departureDate, String departureHour) {
         for(Flight flight : this.flights) {
-            if(flight.getDeparture().equals(departure)) {
+            if(flight.getDepartureDate().equals(departureDate) && flight.getDepartureHour().equals(departureHour))  {
                 return flight;
             }
         }

@@ -9,7 +9,7 @@ public interface IFlightRepository {
 
         List<Flight> getFlightsByCategory(Flight.Category category);
 
-        Flight getFlightByDeparture(String departure);
+        Flight getFlightByDeparture(String departureDate, String departureHour);
 
         void addFlight(Flight flight);
 

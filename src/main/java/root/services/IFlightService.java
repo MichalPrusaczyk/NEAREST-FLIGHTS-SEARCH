@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IFlightService {
     AddFlightResult addFlight(Flight flight);
-        Flight getFlightByDepartures(String departures);
+        Flight getFlightByDepartures(String departuresDate, String departuresHour);
         Flight getFlightById(int id);
         void updateFlight(Flight flight);
         List<Flight> getFlightsByCategoryWithFilter(String category);
