@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Metal Profiles</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/utilities.css">
+    <script src="order.js"></script>
+</head>
+<body>
+<div th:replace="fragments.html :: nav2"></div>
+<section class="logincase">
+    <div class="container grid">
+        <div class="logincase-text">
+            <h1>Your orders</h1>
+            <p>please check all positions</p>
+
+<div id="content">
+    <div id="orders-label">Click on price to view details</div>
+    <th:block th:each="order : ${orders}">
+        <div class="order" th:onclick="|showOrderPositions('${order.id}')|" th:id="'order' + ${order.id}">
+
+
+            <div th:text="'Price: ' + ${order.price} + ' pln'" class="total"></div>
+            <th:block th:each="position : ${order.positions}">
+                <div class="position">
+                    <li><div th:text="${position.flight.name}"></div></li>
+                    <li><div th:text="${position.length} + ' meters'"></div></li>
+                    <li><div th:text="${position.flight.price} + ' pln/meter'"></div></li>
+                    <div th:text="${order.status}" class="order-state"></div>
+                </div>
+            </th:block>
+
+
+        </div>
+    </th:block>
+</div>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments.html :: footer"></div>
+</body>
+</html>

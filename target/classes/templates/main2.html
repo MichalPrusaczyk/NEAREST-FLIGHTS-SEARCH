@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Metal Profiles</title>
+    <link rel="stylesheet" href="/utilities.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+
+<!--Navbar-->
+<div th:replace="fragments.html :: navbar"></div>
+
+<!--Menu-->
+<div th:replace="fragments.html :: menu"></div>
+
+<!--Filter-->
+
+
+<!--Flight info-->
+<div id="content">
+    <th:block th:each="flight : ${flights}">
+        <div class="flight">
+            <p th:text="${flight.name}" class="flight-name"></p>
+            <p th:text="${flight.shape}" class="flight-shape"></p>
+            <div class="flight-info">
+                <span th:text="'Stock: ' + ${flight.length}"></span>
+                <span th:text="'EAN: ' + ${flight.ean}"></span>
+                <span th:text="'Price: ' + ${flight.price}"></span>
+                <a th:if="${flight.length > 0}" th:href="@{/addToBasket/{id}(id=${flight.id})}" class="buy"></a>
+                <a th:if="${flight.length <= 0}" th:href="@{/addToBasket/{id}(id=${flight.id})}" class="buy-blocked"></a>
+                <a th:if="${user.role.name() == 'ADMIN'}" th:href="@{/editFlight/{id}(id=${flight.id})}" class="edit"></a>
+            </div>
+        </div>
+    </th:block>
+</div>
+
+<!--Footer-->
+<div th:replace="fragments.html :: footer"></div>
+
+</body>
+</html>
