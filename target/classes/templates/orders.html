@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Metal Profiles</title>
-    <link rel="stylesheet" href="/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <title>Warehouse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style1.css">
     <link rel="stylesheet" href="/utilities.css">
+    <!--JS-->
+    <script src="loginValidator.js"></script>
     <script src="order.js"></script>
+    <script src="hamburger.js"></script>
 </head>
 <body>
-<div th:replace="fragments.html :: nav2"></div>
-<section class="logincase">
-    <div class="container grid">
-        <div class="logincase-text">
-            <h1>Your orders</h1>
-            <p>please check all positions</p>
 
-<div id="content">
-    <div id="orders-label">Click on price to view details</div>
+<!-- background -->
+<div class="bg">
+
+    <!-- ORDERS-->
+    <ul>
     <th:block th:each="order : ${orders}">
-        <div class="order" th:onclick="|showOrderPositions('${order.id}')|" th:id="'order' + ${order.id}">
+            <div th:text="'Price: ' + ${order.price} + ' pln'"></div>
 
-
-            <div th:text="'Price: ' + ${order.price} + ' pln'" class="total"></div>
-            <th:block th:each="position : ${order.positions}">
-                <div class="position">
-                    <li><div th:text="${position.flight.name}"></div></li>
-                    <li><div th:text="${position.length} + ' meters'"></div></li>
-                    <li><div th:text="${position.flight.price} + ' pln/meter'"></div></li>
-                    <div th:text="${order.status}" class="order-state"></div>
+                <div class="flight">
+                    <li>
+                    <p th:text="${position.flight.origin}"></p>
+                    <p th:text="${position.places} + ' meters'"></p>
+                    <p th:text="${position.flight .price} + ' pln/meter'"></p>
+                    <p th:text="${order.status}" class="order-state"></p>
+                    </li>
                 </div>
-            </th:block>
 
-
-        </div>
     </th:block>
+</ul>
 </div>
-        </div>
-    </div>
-</section>
+
+
+
+
+
+<!-- footer -->
 <div th:replace="fragments.html :: footer"></div>
+
+
 </body>
 </html>

@@ -58,7 +58,7 @@ public class UserController {
         this.sessionObject.setUser(this.userService.authenticate(user));
 
         if(this.sessionObject.getUser() != null) {
-            return "redirect:/home";
+            return "redirect:/main";
         } else {
             this.sessionObject.setInfo("Nieprawidłowe dane !!");
             return "redirect:/login";

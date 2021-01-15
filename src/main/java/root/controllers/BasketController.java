@@ -22,9 +22,15 @@ public class BasketController {
 
     @RequestMapping(value = "/addToBasket/{id}", method = RequestMethod.GET)
     public String addFlightToBasket(@PathVariable int id) {
-        this.basketService.addToBasket(id);
-        return "redirect:/main";
+        if (sessionObject.isLogged()) {
+            this.basketService.addToBasket(id);
+            return "redirect:/main";
+        } else {
+            this.sessionObject.setInfo("Please login to order your flight");
+        return "redirect:/login";
     }
+    }
+
 
     @RequestMapping(value = "/basket", method = RequestMethod.GET)
     public String showBasket(Model model) {
